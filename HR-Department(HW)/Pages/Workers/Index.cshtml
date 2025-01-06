@@ -1,0 +1,121 @@
+﻿@page
+@model HR_Department_HW_.Pages.Workers.IndexModel
+
+@{
+    ViewData["Title"] = "Workers";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Workers</h1>
+
+<p>
+    @if (User.Identity.IsAuthenticated && User.Identity.Name == "admin123@gmail.com" || User.Identity.IsAuthenticated && User.Identity.Name == "hr123@gmail.com")
+    {
+        <a asp-page="Create">Create New</a>
+    }
+</p>
+<p>
+    @if (User.Identity.IsAuthenticated && User.Identity.Name == "admin123@gmail.com" || User.Identity.IsAuthenticated && User.Identity.Name == "hr123@gmail.com")
+    {
+        <a asp-page="Audit">Click to Audit Workers</a>
+    }
+</p>
+<form asp-page="./Index" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by Name/Surname:
+            <input type="text" name="SearchString" value="@Model.CurrentFilter" />
+            <input type="submit" value="Search" class="btn btn-primary" /> |
+            <a asp-page="./Index">Back to full List</a>
+        </p>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <a asp-page="./Index" asp-route-sortOrder="@Model.NameSort">
+                    @Html.DisplayNameFor(model => model.Worker[0].WorkerName)
+                </a>
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Worker[0].WorkerSurname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Worker[0].WorkerAge)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Worker[0].MillitaryDocument)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Worker[0].RKNOPP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Worker[0].PasportSerial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Worker[0].BachelorGrade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Worker[0].TotalECTS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Worker[0].Position)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Worker[0].Department)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Worker) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkerSurname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkerAge)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MillitaryDocument)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RKNOPP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PasportSerial)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BachelorGrade)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalECTS)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position.PositionName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department.DepartmentName)
+            </td>
+            <td>
+                @if (User.Identity.IsAuthenticated && User.Identity.Name == "admin123@gmail.com")
+                {
+                    <a asp-page="./Edit" asp-route-id="@item.WorkerId">Edit</a>
+                    <br />
+                    <span>|</span>
+                    <a asp-page="./Delete" asp-route-id="@item.WorkerId">Delete</a>
+                    <br />
+                    <span>|</span>
+                }
+
+                <a asp-page="./Details" asp-route-id="@item.WorkerId">Details</a>
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,117 @@
+﻿@page
+@model HR_Department_HW_.Pages.Workers.AuditModel
+
+@{
+    ViewData["Title"] = "Audit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Audit</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Worker[0].WorkerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Worker[0].WorkerSurname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Worker[0].WorkerAge)
+             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Worker[0].MillitaryDocument)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Worker[0].RKNOPP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Worker[0].PasportSerial)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Worker[0].BachelorGrade)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Worker[0].TotalECTS)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Worker[0].Position)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Worker[0].Department)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Worker) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WorkerSurname)
+            </td>
+            @if (item.WorkerAge < 18)
+            {
+                <td bgcolor="red">
+                    @Html.DisplayFor(modelItem => item.WorkerAge)
+                </td>
+            }
+            else
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.WorkerAge)
+                </td>
+            }
+
+            @if (item.MillitaryDocument == false)
+            {
+                <td bgcolor="red">
+                    @Html.DisplayFor(modelItem => item.MillitaryDocument)
+                </td>
+            }
+            else
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.MillitaryDocument)
+                </td>
+            }
+
+            <td>
+                @Html.DisplayFor(modelItem => item.RKNOPP)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PasportSerial)
+            </td>
+            @if (item.BachelorGrade == true && item.TotalECTS < 240)
+            {
+                <td bgcolor="red">
+                    @Html.DisplayFor(modelItem => item.BachelorGrade)
+                </td>
+                <td bgcolor="red">
+                    @Html.DisplayFor(modelItem => item.TotalECTS)
+                </td>
+            }
+            else
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.BachelorGrade)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalECTS)
+                </td>
+            }
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Position.PositionName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department.DepartmentName)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,81 @@
+﻿@page
+@model HR_Department_HW_.Pages.Workers.EditModel
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h1>Edit</h1>
+
+<h4>Worker</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Worker.WorkerId" />
+            <div class="form-group">
+                <label asp-for="Worker.WorkerName" class="control-label"></label>
+                <input asp-for="Worker.WorkerName" class="form-control" />
+                <span asp-validation-for="Worker.WorkerName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Worker.WorkerSurname" class="control-label"></label>
+                <input asp-for="Worker.WorkerSurname" class="form-control" />
+                <span asp-validation-for="Worker.WorkerSurname" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Worker.WorkerAge" class="control-label"></label>
+                <input asp-for="Worker.WorkerAge" class="form-control" />
+                <span asp-validation-for="Worker.WorkerAge" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Worker.MillitaryDocument" class="control-label"></label>
+                <input asp-for="Worker.MillitaryDocument" class="form-control" />
+                <span asp-validation-for="Worker.MillitaryDocument" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Worker.RKNOPP" class="control-label"></label>
+                <input asp-for="Worker.RKNOPP" class="form-control" />
+                <span asp-validation-for="Worker.RKNOPP" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Worker.PasportSerial" class="control-label"></label>
+                <input asp-for="Worker.PasportSerial" class="form-control" />
+                <span asp-validation-for="Worker.PasportSerial" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Worker.BachelorGrade" class="control-label"></label>
+                <input asp-for="Worker.BachelorGrade" class="form-control" />
+                <span asp-validation-for="Worker.BachelorGrade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Worker.TotalECTS" class="control-label"></label>
+                <input asp-for="Worker.TotalECTS" class="form-control" />
+                <span asp-validation-for="Worker.TotalECTS" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Worker.PositionId" class="control-label"></label>
+                <select asp-for="Worker.PositionId" class="form-control" asp-items="ViewBag.PositionId"></select>
+                <span asp-validation-for="Worker.PositionId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Worker.DepartmentId" class="control-label"></label>
+                <select asp-for="Worker.DepartmentId" class="form-control" asp-items="ViewBag.DepartmentId"></select>
+                <span asp-validation-for="Worker.DepartmentId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="./Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
