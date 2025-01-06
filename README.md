@@ -2,7 +2,7 @@
 
 # Info
 Bachalor grade diploma project based on ASP.Net for HR Department.
-Base CRUD operation, and some Audit functions for HR Department employees.
+Base CRUD operations, simple search and some Audit functions for HR Department employees.
 Authorization/Registration to avoid leak of sensitive information.
 
 
